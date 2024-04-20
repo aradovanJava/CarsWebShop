@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Car search</title>
+</head>
+<body>
+<div>
+    <h1>Car search</h1>
+    <form action="#" th:action="@{/mvc/carswebshop/searchCars.html}" method="post" th:object="${carSearchForm}">
+        <label>Manufacturer:</label>
+        <input type="text" th:field="*{manufacturer}" /><br/>
+
+        <label>Type:</label>
+        <input type="text" th:field="*{type}" /><br/>
+
+        <label>Engine type:</label>
+        <select name="engineTypes"
+                id="engineTypes"
+                th:field="*{engineType}">
+            <option th:value="None"> Choose engine type</option>
+            <option th:each="engineType:${engineTypes}" th:value="${engineType}"
+                    th:text="${engineType}" >Engine type</option>
+        </select>
+        <br/>
+
+        <label>Color:</label>
+        <select name="colors"
+                id="colors"
+                th:field="*{color}">
+            <option th:value="None"> Choose color</option>
+            <option th:each="color:${colors}" th:value="${color}"
+                    th:text="${color}" >Color</option>
+        </select>
+        <br/>
+
+        <label>Production year:</label>
+        <input type="number" th:field="*{productionYearFrom}" />
+        -
+        <input type="number" th:field="*{productionYearTo}" /><br/>
+
+        <label>Milage:</label>
+        <input type="number" th:field="*{milageFrom}" />
+        -
+        <input type="number" th:field="*{milageTo}" /><br/>
+
+        <label>Price:</label>
+        <input type="number" th:field="*{priceFrom}" />
+        -
+        <input type="number" th:field="*{priceTo}" /><br/>
+
+        <button type="submit">Search</button>
+    </form>
+</div>
+    <div th:if="${not #lists.isEmpty(cars)}">
+        <h2>Cars list</h2>
+        <table border="1">
+            <tr>
+                <th>Manufacturer</th>
+                <th>Type</th>
+                <th>Engine Type</th>
+                <th>Color</th>
+                <th>Production Year</th>
+                <th>Milage</th>
+                <th>Price</th>
+            </tr>
+            <tr th:each="car : ${cars}">
+                <td th:text="${car.manufacturer}"></td>
+                <td th:text="${car.type}"></td>
+                <td th:text="${car.engineType}"></td>
+                <td th:text="${car.color}"></td>
+                <td th:text="${car.productionYear}"></td>
+                <td th:text="${car.milage}"></td>
+                <td th:text="${car.price}"></td>
+            </tr>
+        </table>
+    </div>
+
+    <div th:if="${car != null}">
+        <table>
+            <tr>
+                <td>Manufacturer</td>
+                <td th:text="${car.manufacturer}"></td>
+            </tr>
+            <tr>
+                <td>Type</td>
+                <td th:text="${car.type}"></td>
+            </tr>
+            <tr>
+                <td>Engine Type</td>
+                <td th:text="${car.engineType}"></td>
+            </tr>
+            <tr>
+                <td>Color</td>
+                <td th:text="${car.color}"></td>
+            </tr>
+            <tr>
+                <td>Production Year</td>
+                <td th:text="${car.productionYear}"></td>
+            </tr>
+            <tr>
+                <td>Milage</td>
+                <td th:text="${car.milage}"></td>
+            </tr>
+            <tr>
+                <td>Price</td>
+                <td th:text="${car.price}"></td>
+            </tr>
+        </table>
+    </div>
+
+</body>
+</html>

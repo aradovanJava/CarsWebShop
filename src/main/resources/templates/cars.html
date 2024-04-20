@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cars</title>
+</head>
+<body>
+
+    <div th:if="${not #lists.isEmpty(cars)}">
+        <h2>Cars List</h2>
+        <table border="1">
+            <tr>
+                <th>Manufacturer</th>
+                <th>Type</th>
+                <th>Engine Type</th>
+                <th>Color</th>
+                <th>Production Year</th>
+                <th>Milage</th>
+                <th>Price</th>
+            </tr>
+            <tr th:each="car : ${cars}">
+                <td th:text="${car.manufacturer}"></td>
+                <td th:text="${car.type}"></td>
+                <td th:text="${car.engineType}"></td>
+                <td th:text="${car.color}"></td>
+                <td th:text="${car.productionYear}"></td>
+                <td th:text="${car.milage}"></td>
+                <td th:text="${car.price}"></td>
+            </tr>
+        </table>
+    </div>
+
+    <div th:if="${car != null}">
+        <table>
+            <tr>
+                <td>Manufacturer</td>
+                <td th:text="${car.manufacturer}"></td>
+            </tr>
+            <tr>
+                <td>Type</td>
+                <td th:text="${car.type}"></td>
+            </tr>
+            <tr>
+                <td>Engine Type</td>
+                <td th:text="${car.engineType}"></td>
+            </tr>
+            <tr>
+                <td>Color</td>
+                <td th:text="${car.color}"></td>
+            </tr>
+            <tr>
+                <td>Production Year</td>
+                <td th:text="${car.productionYear}"></td>
+            </tr>
+            <tr>
+                <td>Milage</td>
+                <td th:text="${car.milage}"></td>
+            </tr>
+            <tr>
+                <td>Price</td>
+                <td th:text="${car.price}"></td>
+            </tr>
+        </table>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Adding new car</title>
+</head>
+<body>
+    <h1>Adding new car</h1>
+    <form action="#" th:action="@{/mvc/carswebshop/saveNewCar.html}" th:object="${newCarDTO}" method="post">
+        <p>Manufacturer: <input type="text" th:field="*{manufacturer}" /></p>
+        <p>Type: <input type="text" th:field="*{type}" /></p>
+        <p> Engine type:
+            <select th:field="*{engineType}">
+                <option value="0">Select engine type option</option>
+                <option th:each="engineType : ${engineTypes}" th:value="${engineType}" th:text="${engineType}"></option>
+            </select>
+        </p>
+        <p> Color:
+            <select th:field="*{color}">
+                <option value="0">Select color option</option>
+                <option th:each="color : ${colorsList}" th:value="${color}" th:text="${color}"></option>
+            </select>
+        </p>
+        <p>Production year: <input type="number" th:field="*{productionYear}" /></p>
+        <p>Milage: <input type="number" th:field="*{milage}" /></p>
+        <p>Price: <input type="number" th:field="*{price}" /></p>
+        <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
+    </form>
+</body>
+</html>
